@@ -60,6 +60,26 @@ window.addEventListener("DOMContentLoaded", () => {
   const isValidEmail = (value) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 
+  const setFeedback = (type, message) => {
+    if (!feedback) return;
+    feedback.textContent = message;
+    feedback.classList.add("form-alert");
+    feedback.classList.remove(
+      "form-alert--info",
+      "form-alert--success",
+      "form-alert--error"
+    );
+    if (type === "success") {
+      feedback.classList.add("form-alert--success");
+      return;
+    }
+    if (type === "error") {
+      feedback.classList.add("form-alert--error");
+      return;
+    }
+    feedback.classList.add("form-alert--info");
+  };
+
   if (form) {
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -90,10 +110,10 @@ window.addEventListener("DOMContentLoaded", () => {
       if (!feedback) return;
 
       if (!isFormValid) {
-        feedback.textContent =
-          "Veuillez compléter tous les champs correctement avant d'envoyer.";
-        feedback.classList.remove("text-emerald-300");
-        feedback.classList.add("text-red-300");
+        setFeedback(
+          "error",
+          "Merci de compléter tous les champs correctement avant d'envoyer."
+        );
         return;
       }
 
@@ -123,9 +143,7 @@ window.addEventListener("DOMContentLoaded", () => {
         submitBtn.textContent = "Envoi en cours...";
       }
 
-      feedback.textContent = "Envoi de votre message...";
-      feedback.classList.remove("text-red-300", "text-emerald-300");
-      feedback.classList.add("text-slate-300");
+      setFeedback("info", "Envoi de votre message en cours...");
 
       try {
         const response = await fetch(endpoint, {
@@ -139,10 +157,10 @@ window.addEventListener("DOMContentLoaded", () => {
           throw new Error(data.message || "Erreur lors de l'envoi.");
         }
 
-        feedback.textContent =
-          data.message || "Merci pour votre message ! Je vous réponds très vite.";
-        feedback.classList.remove("text-red-300");
-        feedback.classList.add("text-emerald-300");
+        setFeedback(
+          "success",
+          "Merci ! Votre message a bien été envoyé. Je vous réponds très vite."
+        );
         form.reset();
         Object.values(fields).forEach((field) => {
           if (field) field.classList.remove("input-success");
@@ -152,13 +170,12 @@ window.addEventListener("DOMContentLoaded", () => {
           typeof endpoint === "string" &&
           endpoint.includes("localhost") &&
           window.location.hostname !== "localhost";
-        feedback.textContent =
-          (isLocalEndpoint
-            ? "Le serveur de contact n'est pas démarré. Lance le backend puis réessaie."
-            : error.message) ||
-          "Une erreur est survenue. Veuillez réessayer plus tard.";
-        feedback.classList.remove("text-emerald-300");
-        feedback.classList.add("text-red-300");
+        setFeedback(
+          "error",
+          isLocalEndpoint
+            ? "Le service de contact est indisponible pour le moment. Réessayez plus tard."
+            : "Impossible d'envoyer le message pour le moment. Réessayez dans quelques instants."
+        );
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
@@ -252,15 +269,3 @@ window.addEventListener("DOMContentLoaded", () => {
     yearEl.textContent = new Date().getFullYear();
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
