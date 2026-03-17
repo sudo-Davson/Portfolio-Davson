@@ -1,0 +1,669 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio moderne d'un Développeur FullStack & Designer Graphique : services, projets, compétences et contact."
+    />
+    <meta
+      name="keywords"
+      content="portfolio, developpeur web, designer graphique, UI UX, branding"
+    />
+    <meta name="author" content="Houedakor Tété Firmin Pierre Damien (Davson)" />
+    <meta property="og:title" content="Houedakor Tété Firmin Pierre Damien (Davson) | Développeur FullStack & Designer Graphique" />
+    <meta
+      property="og:description"
+      content="Découvrez un portfolio moderne avec des projets web, design UI/UX et branding."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+
+    <title>Houedakor Tété Firmin Pierre Damien (Davson) | Développeur FullStack & Designer Graphique</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lightbox CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-slate-950 text-slate-100">
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
+      <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+        <a href="#accueil" class="text-xl font-semibold tracking-wide text-white">
+          Davson<span class="text-sky-400">.</span>
+        </a>
+        <nav class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex">
+          <a class="hover:text-white transition" href="#accueil">Accueil</a>
+          <a class="hover:text-white transition" href="#services">Services</a>
+          <a class="hover:text-white transition" href="#portfolio">Portfolio</a>
+          <a class="hover:text-white transition" href="#apropos">À propos</a>
+          <a class="hover:text-white transition" href="#contact">Contact</a>
+        </nav>
+        <div class="hidden items-center gap-3 md:flex">
+          <span class="text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-400">Langue</span>
+          <div class="relative">
+            <select
+              id="language-select"
+              class="language-select appearance-none rounded-full border border-slate-700 bg-slate-900/70 px-4 py-2 pr-10 text-xs font-semibold uppercase tracking-[0.2em] text-slate-200 transition focus:border-sky-400 focus:outline-none"
+            >
+              <option value="fr">FR</option>
+              <option value="en">EN</option>
+              <option value="es">ES</option>
+              <option value="pt">PT</option>
+            </select>
+            <svg
+              class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+        <div id="google_translate_element" class="translate-hidden"></div>
+        <button
+          id="menu-btn"
+          class="inline-flex items-center justify-center rounded-lg border border-slate-700 px-3 py-2 text-slate-200 transition hover:border-slate-500 md:hidden"
+          aria-label="Ouvrir le menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="h-5 w-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden border-t border-slate-800 bg-slate-950 md:hidden">
+        <nav class="flex flex-col gap-4 px-6 py-4 text-sm font-medium text-slate-200">
+          <a class="hover:text-white transition" href="#accueil">Accueil</a>
+          <a class="hover:text-white transition" href="#services">Services</a>
+          <a class="hover:text-white transition" href="#portfolio">Portfolio</a>
+          <a class="hover:text-white transition" href="#apropos">À propos</a>
+          <a class="hover:text-white transition" href="#contact">Contact</a>
+          <div class="mt-2">
+            <label class="text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-400">Langue</label>
+            <div class="relative mt-2">
+              <select
+                id="language-select-mobile"
+                class="language-select w-full appearance-none rounded-full border border-slate-700 bg-slate-900/70 px-4 py-2 pr-10 text-xs font-semibold uppercase tracking-[0.2em] text-slate-200 transition focus:border-sky-400 focus:outline-none"
+              >
+                <option value="fr">FR</option>
+                <option value="en">EN</option>
+                <option value="es">ES</option>
+                <option value="pt">PT</option>
+              </select>
+              <svg
+                class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div></nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Section Accueil / Hero -->
+      <section id="accueil" class="relative overflow-hidden">
+        <div class="absolute inset-0 -z-10">
+          <div class="absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-sky-500/20 blur-3xl"></div>
+          <div class="absolute right-0 top-32 h-80 w-80 rounded-full bg-indigo-500/20 blur-3xl"></div>
+        </div>
+        <div class="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-2">
+          <div class="reveal">
+            <p class="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">
+              Portfolio
+            </p>
+            <h1 class="text-4xl font-bold leading-tight text-white md:text-5xl">
+              Houedakor Tété Firmin Pierre Damien
+            </h1>
+            <p class="mt-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+              alias Davson
+            </p>
+            <p class="mt-4 text-lg text-slate-300">
+              Développeur FullStack & Designer de Solutions Graphique
+            </p>
+            <p class="mt-2 text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">
+              Développeur & Designer de Solutions Digitales
+            </p>
+            <p class="mt-5 text-slate-400">
+              Je suis développeur et designer spécialisé dans la création de solutions web et mobiles modernes,
+              performantes et visuellement impactantes.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href="#portfolio"
+                class="btn-primary inline-flex items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white transition hover:scale-[1.02]"
+              >
+                Voir mes travaux
+              </a>
+              <a
+                href="#contact"
+                class="inline-flex items-center justify-center rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-slate-500"
+              >
+                Discutons de votre projet
+              </a>
+            </div>
+          </div>
+          <div class="reveal">
+            <div class="rounded-3xl border border-slate-800 bg-slate-900/60 p-6 shadow-xl">
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl bg-slate-950 p-4">
+                  <p class="text-xs uppercase tracking-widest text-sky-400">Disponibilité</p>
+                  <p class="mt-2 text-lg font-semibold text-white">Nouveaux projets</p>
+                  <p class="mt-2 text-sm text-slate-400">Ouvert pour avril 2026</p>
+                </div>
+                <div class="rounded-2xl bg-slate-950 p-4">
+                  <p class="text-xs uppercase tracking-widest text-indigo-300">Focus</p>
+                  <p class="mt-2 text-lg font-semibold text-white">Design & Dev</p>
+                  <p class="mt-2 text-sm text-slate-400">Sites, dashboards, branding</p>
+                </div>
+                <div class="rounded-2xl bg-slate-950 p-4">
+                  <p class="text-xs uppercase tracking-widest text-emerald-300">Stack</p>
+                  <p class="mt-2 text-lg font-semibold text-white">Web moderne</p>
+                  <p class="mt-2 text-sm text-slate-400">JS, Tailwind, Webflow</p>
+                </div>
+                <div class="rounded-2xl bg-slate-950 p-4">
+                  <p class="text-xs uppercase tracking-widest text-amber-300">Support</p>
+                  <p class="mt-2 text-lg font-semibold text-white">Partenariat</p>
+                  <p class="mt-2 text-sm text-slate-400">Du brief à la mise en ligne</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Services -->
+      <section id="services" class="py-20">
+        <div class="mx-auto w-full max-w-6xl px-6">
+          <div class="reveal">
+            <h2 class="text-3xl font-bold text-white">Services</h2>
+            <p class="mt-3 max-w-2xl text-slate-400">
+              Des solutions complètes pour vous aider à créer une présence digitale cohérente et mémorable.
+            </p>
+          </div>
+          <div class="mt-10 grid gap-6 md:grid-cols-3">
+            <article class="reveal rounded-3xl border border-slate-800 bg-slate-900/60 p-6">
+              <h3 class="text-xl font-semibold text-white">Développement web et Application mobile</h3>
+              <p class="mt-3 text-sm text-slate-400">
+                Sites vitrines, landing pages et dashboards performants avec un code propre et maintenable.
+              </p>
+              <p class="mt-4 text-xs uppercase tracking-widest text-sky-400">Front-end & Intégration</p>
+            </article>
+            <article class="reveal rounded-3xl border border-slate-800 bg-slate-900/60 p-6">
+              <h3 class="text-xl font-semibold text-white">Design UI/UX</h3>
+              <p class="mt-3 text-sm text-slate-400">
+                Interfaces centrées utilisateur, prototypes interactifs et systèmes de design évolutifs.
+              </p>
+              <p class="mt-4 text-xs uppercase tracking-widest text-indigo-300">Wireframes & Design System</p>
+            </article>
+            <article class="reveal rounded-3xl border border-slate-800 bg-slate-900/60 p-6">
+              <h3 class="text-xl font-semibold text-white">Branding</h3>
+              <p class="mt-3 text-sm text-slate-400">
+                Identités visuelles complètes : logos, chartes graphiques et supports marketing premium.
+              </p>
+              <p class="mt-4 text-xs uppercase tracking-widest text-emerald-300">Logo & Identité</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+            <!-- Section Portfolio -->
+      <section id="portfolio" class="bg-slate-900/30 py-20">
+        <div class="mx-auto w-full max-w-6xl px-6">
+          <div class="reveal">
+            <h2 class="text-3xl font-bold text-white">Portfolio</h2>
+            <p class="mt-3 max-w-2xl text-slate-400">
+              Une sélection de projets récents pour illustrer l'univers visuel et les expertises proposées.
+            </p>
+          </div>
+          <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Portfolio Card 1 -->
+            <figure class="reveal group overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/80">
+              <a
+                href="images/GUINEE.jpg"
+                class="glightbox block"
+                data-gallery="portfolio"
+                data-title="Société Ngody"
+                data-description="Site web récent pour Société Ngody : identité digitale moderne et claire."
+              >
+                <img
+                  src="images/GUINEE.jpg"
+                  alt="Société Ngody"
+                  class="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </a>
+              <figcaption class="p-5">
+                <h3 class="text-lg font-semibold text-white">Société Ngody</h3>
+                <p class="mt-2 text-sm text-slate-400">Projet web récent : vitrine moderne et responsive.</p>
+                <a
+                  class="mt-3 inline-flex items-center text-sm font-semibold text-sky-400 transition hover:text-sky-300"
+                  href="https://societe-ngody-demo.onrender.com/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Voir le site
+                </a>
+              </figcaption>
+            </figure>
+            <!-- Portfolio Card 2 -->
+            <figure class="reveal group overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/80">
+              <a
+                href="images/mockup.jpeg"
+                class="glightbox block"
+                data-gallery="portfolio"
+                data-title="Mockup Produit"
+                data-description="Mockup marketing pour mise en situation de produit."
+              >
+                <img
+                  src="images/mockup.jpeg"
+                  alt="Mockup Produit"
+                  class="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </a>
+              <figcaption class="p-5">
+                <h3 class="text-lg font-semibold text-white">Mockup Produit</h3>
+                <p class="mt-2 text-sm text-slate-400">Présentation visuelle et mise en contexte premium.</p>
+              </figcaption>
+            </figure>
+            <!-- Portfolio Card 3 -->
+            <figure class="reveal group overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/80">
+              <a
+                href="images/logo_Sonia.jpeg"
+                class="glightbox block"
+                data-gallery="portfolio"
+                data-title="Logo Sonia"
+                data-description="Création de logo et déclinaisons pour une marque personnelle."
+              >
+                <img
+                  src="images/logo_Sonia.jpeg"
+                  alt="Logo Sonia"
+                  class="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </a>
+              <figcaption class="p-5">
+                <h3 class="text-lg font-semibold text-white">Logo Sonia</h3>
+                <p class="mt-2 text-sm text-slate-400">Identité graphique élégante et mémorable.</p>
+              </figcaption>
+            </figure>
+            <!-- Portfolio Card 4 -->
+            <figure class="reveal group overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/80">
+              <a
+                href="images/AFFICHE_LOCKS_PRO.jpeg"
+                class="glightbox block"
+                data-gallery="portfolio"
+                data-title="Affiche Locks Pro"
+                data-description="Affiche promotionnelle pour événement et communication visuelle."
+              >
+                <img
+                  src="images/AFFICHE_LOCKS_PRO.jpeg"
+                  alt="Affiche Locks Pro"
+                  class="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </a>
+              <figcaption class="p-5">
+                <h3 class="text-lg font-semibold text-white">Affiche Locks Pro</h3>
+                <p class="mt-2 text-sm text-slate-400">Affiche impactante avec hiérarchie claire.</p>
+              </figcaption>
+            </figure>
+            <!-- Portfolio Card 5 -->
+            <figure class="reveal group overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/80">
+              <a
+                href="images/ETIQUETTE_EBESSE_FIONFION_M_JEANNE.jpg.jpeg"
+                class="glightbox block"
+                data-gallery="portfolio"
+                data-title="Étiquette Ebesse Fionfion"
+                data-description="Design d'étiquette produit avec identité graphique forte."
+              >
+                <img
+                  src="images/ETIQUETTE_EBESSE_FIONFION_M_JEANNE.jpg.jpeg"
+                  alt="Étiquette Ebesse Fionfion"
+                  class="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </a>
+              <figcaption class="p-5">
+                <h3 class="text-lg font-semibold text-white">Étiquette Ebesse Fionfion</h3>
+                <p class="mt-2 text-sm text-slate-400">Packaging et mise en avant de marque.</p>
+              </figcaption>
+            </figure>
+            <!-- Portfolio Card 6 -->
+            <figure class="reveal group overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/80">
+              <a
+                href="images/choir_AMJ.jpeg"
+                class="glightbox block"
+                data-gallery="portfolio"
+                data-title="Visuel Guinée"
+                data-description="Logo créatif pour une Chorale locale."
+              >
+                <img
+                  src="images/choir_AMJ.jpeg"
+                  alt="Visuel Guinée"
+                  class="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </a>
+              <figcaption class="p-5">
+                <h3 class="text-lg font-semibold text-white">Logo Creatif</h3>
+                <p class="mt-2 text-sm text-slate-400">Création de logo Pour Chorale</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+            <!-- Section À propos -->
+      <section id="apropos" class="py-20">
+        <div class="mx-auto w-full max-w-6xl px-6">
+          <div class="grid gap-10 md:grid-cols-2 md:items-start">
+            <div class="reveal">
+              <img
+                src="images/designdev.png"
+                alt="Portrait de Davson"
+                class="w-full rounded-3xl border border-slate-800 bg-slate-900/60"
+              />
+              <div class="mt-6 rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+                <p class="text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">
+                  Développeur & Designer de Solutions Digitales
+                </p>
+                <p class="mt-3 text-sm text-slate-300">Basé à Lomé - Togo</p>
+              </div>
+            </div>
+            <div class="reveal">
+              <h2 class="text-3xl font-bold text-white">À propos</h2>
+              <div class="mt-4 space-y-4 text-slate-400">
+                <p>
+                  Je suis développeur et designer spécialisé dans la création de solutions web et mobiles modernes,
+                  performantes et visuellement impactantes.
+                </p>
+                <p>
+                  J'accompagne les entreprises et les entrepreneurs dans la digitalisation de leurs activités, en
+                  concevant des produits qui allient technologie, design et efficacité. Mon objectif est simple :
+                  transformer vos idées en solutions concrètes, utiles et rentables.
+                </p>
+                <p>
+                  Grâce à une maîtrise de technologies comme Python, JavaScript, PHP, Java et Flutter, je développe
+                  des systèmes complets, de la conception technique jusqu'à l'expérience utilisateur.
+                </p>
+                <p>
+                  Mais au-delà du développement, je porte une attention particulière au design et à l'expérience
+                  utilisateur (UI/UX).
+                </p>
+              </div>
+
+                            <div class="mt-6 grid gap-6 lg:grid-cols-2">
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                  <h3 class="text-lg font-semibold text-white">Chaque interface est</h3>
+                  <ul class="mt-3 list-disc space-y-2 pl-5 text-slate-300">
+                    <li>Moderne</li>
+                    <li>Intuitive</li>
+                    <li>Rapide</li>
+                    <li>Adaptée aux utilisateurs réels</li>
+                  </ul>
+                </div>
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                  <h3 class="text-lg font-semibold text-white">Ce que je conçois</h3>
+                  <ul class="mt-3 list-disc space-y-2 pl-5 text-slate-300">
+                    <li>Applications web sur mesure</li>
+                    <li>Plateformes digitales (marketplace, outils de gestion)</li>
+                    <li>Applications mobiles performantes</li>
+                    <li>Interfaces UI/UX modernes et professionnelles</li>
+                    <li>Systèmes d'automatisation pour optimiser les activités</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="mt-10 grid gap-6 lg:grid-cols-3">
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+              <h3 class="text-lg font-semibold text-white">Ce qui me différencie</h3>
+              <ul class="mt-3 list-disc space-y-2 pl-5 text-slate-300">
+                <li>Double compétence développement + design</li>
+                <li>Approche centrée sur l'utilisateur et les résultats</li>
+                <li>Solutions adaptées aux réalités africaines</li>
+                <li>Attention aux détails visuels et à la performance</li>
+                <li>Capacité à transformer une idée en produit complet</li>
+              </ul>
+            </div>
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+              <h3 class="text-lg font-semibold text-white">Compétences clés</h3>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200">Python</span>
+                <span class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200">JavaScript</span>
+                <span class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200">PHP</span>
+                <span class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200">Java</span>
+                <span class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200">Flutter</span>
+                <span class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200">UI/UX</span>
+                <span class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200">Branding</span>
+                <span class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200">Automatisation</span>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+              <h3 class="text-lg font-semibold text-white">Outils maîtrisés</h3>
+              <div class="mt-3 grid grid-cols-2 gap-3 text-sm text-slate-400">
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3">Figma</div>
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3">Adobe CC</div>
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3">VS Code</div>
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3">Flutter</div>
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3">CorelDraw</div>
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3">Photoshop</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Section Contact -->
+      <section id="contact" class="bg-slate-900/30 py-20">
+        <div class="mx-auto w-full max-w-6xl px-6">
+          <div class="reveal">
+            <h2 class="text-3xl font-bold text-white">Contact</h2>
+            <p class="mt-3 max-w-2xl text-slate-400">
+              Un projet en tête ? Parlons-en et construisons ensemble une solution sur-mesure.
+            </p>
+          </div>
+          <div class="mt-10 grid gap-10 md:grid-cols-2">
+                        <div class="reveal rounded-3xl border border-slate-800 bg-slate-950/80 p-6">
+              <h3 class="text-xl font-semibold text-white">Disponibilité & infos</h3>
+              <p class="mt-3 text-sm text-slate-400">
+                Lomé - Togo · Disponible pour missions freelance et collaborations long terme.
+              </p>
+              <div class="mt-6 space-y-3 text-sm text-slate-300">
+                <p><span class="text-slate-500">Email :</span> pierredamien600@gmail.com</p>
+                <p><span class="text-slate-500">Téléphone :</span> +228 91 11 56 24</p>
+                <p><span class="text-slate-500">Localisation :</span> Lomé - Togo</p>
+              </div>
+              <a
+                class="mt-6 inline-flex items-center justify-center rounded-full border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-slate-500"
+                href="https://wa.me/22891115624"
+                target="_blank"
+                rel="noopener"
+              >
+                WhatsApp direct
+              </a>
+            </div>
+            <!-- Endpoint API: remplace par l'URL de ton backend en production -->
+            <form
+              id="contact-form"
+              class="reveal rounded-3xl border border-slate-800 bg-slate-950/80 p-6"
+              novalidate
+            >
+              <h3 class="text-xl font-semibold text-white">Envoyer un message</h3>
+              <div class="mt-5 space-y-4">
+                <div>
+                  <label for="name" class="text-sm text-slate-300">Nom complet</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    class="mt-2 w-full rounded-2xl border border-slate-800 bg-slate-900/70 px-4 py-3 text-sm text-white focus:border-sky-400 focus:outline-none"
+                    placeholder="Votre nom"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="text-sm text-slate-300">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    class="mt-2 w-full rounded-2xl border border-slate-800 bg-slate-900/70 px-4 py-3 text-sm text-white focus:border-sky-400 focus:outline-none"
+                    placeholder="votre@email.com"
+                  />
+                </div>
+                <div>
+                  <label for="message" class="text-sm text-slate-300">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    required
+                    class="mt-2 w-full rounded-2xl border border-slate-800 bg-slate-900/70 px-4 py-3 text-sm text-white focus:border-sky-400 focus:outline-none"
+                    placeholder="Parlez-moi de votre projet..."
+                  ></textarea>
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn-primary mt-6 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white transition hover:scale-[1.01]"
+              >
+                Envoyer
+              </button>
+              <p id="form-feedback" class="mt-4 text-sm text-slate-300"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950">
+      <div class="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-8 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="text-lg font-semibold text-white">Davson</p>
+          <p class="mt-1 text-sm text-slate-500">Développeur FullStack & Designer Graphique</p>
+        </div>
+        <div class="flex items-center gap-4 text-sm text-slate-400">
+          <a class="transition hover:text-white" href="#">Instagram</a>
+          <a class="transition hover:text-white" href="#">Behance</a>
+          <a class="transition hover:text-white" href="https://www.linkedin.com/in/pierre-damien-6673752a1">LinkedIn</a>
+          <a class="transition hover:text-white" href="https://github.com/sudo-Davson/">Github</a>
+        </div>
+        <p class="text-xs text-slate-600">© <span id="current-year"></span> Davson. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-6 right-6 hidden h-12 w-12 items-center justify-center rounded-full bg-slate-900/80 text-xl font-semibold text-white shadow-lg shadow-slate-900/40 transition hover:-translate-y-1 hover:bg-slate-800"
+      aria-label="Revenir en haut"
+    >
+      ?
+    </button>
+
+    <!-- Google Translate -->
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "fr",
+            includedLanguages: "fr,en,es,pt",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          "google_translate_element"
+        );
+        window.dispatchEvent(new Event("google-translate-ready"));
+      }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Lightbox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <!-- Custom Script -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
