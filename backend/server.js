@@ -1,5 +1,4 @@
 ﻿const express = require("express");
-const nodemailer = require("nodemailer");
 const cors = require("cors");
 
 if (process.env.NODE_ENV !== "production") {
@@ -12,17 +11,10 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json({ limit: "1mb" }));
 
-const requiredEnv = [
-  "SMTP_HOST",
-  "SMTP_PORT",
-  "SMTP_USER",
-  "SMTP_PASS",
-  "TO_EMAIL",
-];
-
+const requiredEnv = ["BREVO_API_KEY", "BREVO_SENDER_EMAIL", "TO_EMAIL"];
 const getMissingEnv = () => requiredEnv.filter((key) => !process.env[key]);
 
-// Log missing SMTP configuration at startup (helps Render debugging)
+// Log missing API configuration at startup (helps Render debugging)
 const missingEnvAtStartup = getMissingEnv();
 if (missingEnvAtStartup.length > 0) {
   console.error("Missing email config keys at startup:", missingEnvAtStartup);
@@ -68,27 +60,30 @@ app.post("/api/contact", async (req, res) => {
     });
   }
 
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT),
-    secure: process.env.SMTP_SECURE === "true",
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  });
+  if (typeof fetch !== "function") {
+    console.error("Fetch API not available in this Node runtime.");
+    return res.status(500).json({
+      success: false,
+      message: "Erreur lors de l'envoi. Réessayez plus tard.",
+    });
+  }
 
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
   const safeMessage = escapeHtml(message).replace(/\n/g, "<br />");
 
-  const mailOptions = {
-    from: `"Davson Portfolio" <${process.env.SMTP_USER}>`,
-    to: process.env.TO_EMAIL,
-    replyTo: email,
+  const senderName = process.env.BREVO_SENDER_NAME || "Davson Portfolio";
+
+  const payload = {
+    sender: {
+      name: senderName,
+      email: process.env.BREVO_SENDER_EMAIL,
+    },
+    to: [{ email: process.env.TO_EMAIL }],
+    replyTo: { email },
     subject: `Nouveau message portfolio - ${name}`,
-    text: `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-    html: `
+    textContent: `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+    htmlContent: `
       <h2>Nouveau message depuis le portfolio</h2>
       <p><strong>Nom :</strong> ${safeName}</p>
       <p><strong>Email :</strong> ${safeEmail}</p>
@@ -97,8 +92,22 @@ app.post("/api/contact", async (req, res) => {
   };
 
   try {
-    await transporter.verify();
-    await transporter.sendMail(mailOptions);
+    const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+        "api-key": process.env.BREVO_API_KEY,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      const detail = data && data.message ? data.message : response.status;
+      throw new Error(`Brevo API error: ${detail}`);
+    }
+
     return res.json({
       success: true,
       message: "Message envoyé avec succès.",
