@@ -2,7 +2,9 @@
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 
-require("dotenv").config();
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -97,5 +99,6 @@ app.post("/api/contact", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Contact API running on port ${PORT}`);
 });
+
 
 
