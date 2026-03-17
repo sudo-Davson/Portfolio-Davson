@@ -117,26 +117,6 @@ window.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const rawEndpoint = form.dataset.endpoint?.trim();
-      const isLocalhost =
-        window.location.hostname === "localhost" ||
-        window.location.hostname === "127.0.0.1";
-      const endpoint = rawEndpoint
-        ? (isLocalhost
-            ? rawEndpoint
-            : rawEndpoint.includes("localhost") || rawEndpoint.includes("127.0.0.1")
-              ? "/api/contact"
-              : rawEndpoint)
-        : isLocalhost
-          ? "http://localhost:3000/api/contact"
-          : "/api/contact";
-
-      const payload = {
-        name: fields.name?.value.trim(),
-        email: fields.email?.value.trim(),
-        message: fields.message?.value.trim(),
-      };
-
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.dataset.originalText = submitBtn.textContent || "";
@@ -145,45 +125,23 @@ window.addEventListener("DOMContentLoaded", () => {
 
       setFeedback("info", "Envoi de votre message en cours...");
 
-      try {
-        const response = await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-        const data = await response.json().catch(() => ({}));
-
-        if (!response.ok) {
-          throw new Error(data.message || "Erreur lors de l'envoi.");
+      setTimeout(() => {
+        try {
+          form.submit();
+        } catch (error) {
+          setFeedback(
+            "error",
+            "Impossible d'envoyer le message pour le moment. Réessayez dans quelques instants."
+          );
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitBtn.dataset.originalText || "Envoyer";
+          }
         }
-
-        setFeedback(
-          "success",
-          "Merci ! Votre message a bien été envoyé. Je vous réponds très vite."
-        );
-        form.reset();
-        Object.values(fields).forEach((field) => {
-          if (field) field.classList.remove("input-success");
-        });
-      } catch (error) {
-        const isLocalEndpoint =
-          typeof endpoint === "string" &&
-          endpoint.includes("localhost") &&
-          window.location.hostname !== "localhost";
-        setFeedback(
-          "error",
-          isLocalEndpoint
-            ? "Le service de contact est indisponible pour le moment. Réessayez plus tard."
-            : "Impossible d'envoyer le message pour le moment. Réessayez dans quelques instants."
-        );
-      } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = submitBtn.dataset.originalText || "Envoyer";
-        }
-      }
+      }, 150);
     });
   }
+
   // Language switcher (Google Translate)
   const languageSelects = document.querySelectorAll(".language-select");
   let pendingLanguage = null;
@@ -243,6 +201,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     }, 500);
   }
+
   // Back-to-top button
   const backToTop = document.getElementById("back-to-top");
   const toggleBackToTop = () => {
@@ -263,6 +222,7 @@ window.addEventListener("DOMContentLoaded", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
+
   // Dynamic year
   const yearEl = document.getElementById("current-year");
   if (yearEl) {
