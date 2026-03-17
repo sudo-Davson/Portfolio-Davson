@@ -46,6 +46,7 @@ app.post("/api/contact", async (req, res) => {
 
   const missingEnv = getMissingEnv();
   if (missingEnv.length > 0) {
+    console.error("Missing email config keys:", missingEnv);
     return res.status(500).json({
       success: false,
       message: "Configuration email manquante côté serveur.",
@@ -88,10 +89,13 @@ app.post("/api/contact", async (req, res) => {
       message: "Message envoyé avec succès.",
     });
   } catch (error) {
+    console.error(
+      "Email send error:",
+      error && error.message ? error.message : error
+    );
     return res.status(500).json({
       success: false,
       message: "Erreur lors de l'envoi. Réessayez plus tard.",
-      error: error && error.message ? error.message : "UNKNOWN_ERROR",
     });
   }
 });
@@ -99,6 +103,7 @@ app.post("/api/contact", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Contact API running on port ${PORT}`);
 });
+
 
 
 
