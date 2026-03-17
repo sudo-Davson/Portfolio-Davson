@@ -22,6 +22,12 @@ const requiredEnv = [
 
 const getMissingEnv = () => requiredEnv.filter((key) => !process.env[key]);
 
+// Log missing SMTP configuration at startup (helps Render debugging)
+const missingEnvAtStartup = getMissingEnv();
+if (missingEnvAtStartup.length > 0) {
+  console.error("Missing email config keys at startup:", missingEnvAtStartup);
+}
+
 const escapeHtml = (value) =>
   String(value)
     .replace(/&/g, "&amp;")
@@ -36,6 +42,15 @@ app.get("/", (_req, res) => {
 
 app.post("/api/contact", async (req, res) => {
   const { name, email, message } = req.body || {};
+  console.log("Contact request received");
+  const requestHasAllFields = Boolean(name && email && message);
+  if (!requestHasAllFields) {
+    console.error("Contact request missing fields", {
+      hasName: Boolean(name),
+      hasEmail: Boolean(email),
+      hasMessage: Boolean(message),
+    });
+  }
 
   if (!name || !email || !message) {
     return res.status(400).json({
@@ -103,7 +118,3 @@ app.post("/api/contact", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Contact API running on port ${PORT}`);
 });
-
-
-
-
