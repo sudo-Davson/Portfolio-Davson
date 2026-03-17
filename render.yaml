@@ -11,6 +11,5 @@
   - type: web
     name: davson-portfolio
     runtime: static
-    plan: free
     buildCommand: mkdir -p dist && cp -r index.html css js images dist/
     staticPublishPath: dist
