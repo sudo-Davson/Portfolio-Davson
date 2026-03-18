@@ -160,16 +160,19 @@ window.addEventListener("DOMContentLoaded", () => {
     combo.value = lang;
     combo.dispatchEvent(new Event("change"));
     return true;
+  };  const openTranslateFallback = (lang) => {
+    if (!lang || lang === "fr") return;
+    const url = `https://translate.google.com/translate?sl=fr&tl=${lang}&u=${encodeURIComponent(window.location.href)}`;
+    window.open(url, "_blank", "noopener");
   };
+
 
   if (languageSelects.length > 0) {
     languageSelects.forEach((select) => {
       select.addEventListener("change", (event) => {
         const lang = event.target.value;
         syncLanguageSelects(lang);
-        if (!applyLanguage(lang)) {
-          pendingLanguage = lang;
-        }
+        if (!applyLanguage(lang)) {\n        pendingLanguage = lang;\n        openTranslateFallback(lang);\n      }
       });
     });
 
@@ -196,9 +199,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (combo) {
         onTranslateReady();
         clearInterval(waitForTranslate);
-      } else if (++attempts > 40) {
-        clearInterval(waitForTranslate);
-      }
+      } else if (++attempts > 40) {\n        if (pendingLanguage) {\n          openTranslateFallback(pendingLanguage);\n          pendingLanguage = null;\n        }\n        clearInterval(waitForTranslate);\n      }
     }, 500);
   }
 
@@ -229,3 +230,4 @@ window.addEventListener("DOMContentLoaded", () => {
     yearEl.textContent = new Date().getFullYear();
   }
 });
+
