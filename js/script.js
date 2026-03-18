@@ -1,5 +1,6 @@
 ﻿// Portfolio interactions: menu, reveal animations, form validation, lightbox
 window.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("js-enabled");
   const menuBtn = document.getElementById("menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
 
@@ -230,4 +231,5 @@ window.addEventListener("DOMContentLoaded", () => {
     yearEl.textContent = new Date().getFullYear();
   }
 });
+
 
