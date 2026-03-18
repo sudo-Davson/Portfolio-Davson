@@ -111,7 +111,8 @@ window.addEventListener("DOMContentLoaded", () => {
       if (!feedback) return;
 
       if (!isFormValid) {
-        const msg = form?.dataset.i18nError ||
+        const msg =
+          form?.dataset.i18nError ||
           "Merci de compléter tous les champs correctement avant d'envoyer.";
         setFeedback("error", msg);
         return;
@@ -123,14 +124,16 @@ window.addEventListener("DOMContentLoaded", () => {
         submitBtn.textContent = "Envoi en cours...";
       }
 
-      const sendingMsg = form?.dataset.i18nSending || "Envoi de votre message en cours...";
+      const sendingMsg =
+        form?.dataset.i18nSending || "Envoi de votre message en cours...";
       setFeedback("info", sendingMsg);
 
       setTimeout(() => {
         try {
           form.submit();
         } catch (error) {
-          const failedMsg = form?.dataset.i18nFailed ||
+          const failedMsg =
+            form?.dataset.i18nFailed ||
             "Impossible d'envoyer le message pour le moment. Réessayez dans quelques instants.";
           setFeedback("error", failedMsg);
           if (submitBtn) {
@@ -156,9 +159,7 @@ window.addEventListener("DOMContentLoaded", () => {
       nav_contact: "Contact",
       hero_portfolio: "Portfolio",
       hero_alias: "alias Davson",
-      hero_role_badge: "Développeur Full Stack",
-      hero_role_suffix: "& Designer de Solutions Graphiques",
-      hero_tagline: "Développeur & Designer de Solutions Digitales",
+      hero_role_line: "Développeur Full Stack & Designer de Solutions Graphiques",
       hero_desc:
         "Je suis développeur et designer spécialisé dans la création de solutions web et mobiles modernes, performantes et visuellement impactantes.",
       hero_cta_primary: "Voir mes travaux",
@@ -190,9 +191,7 @@ window.addEventListener("DOMContentLoaded", () => {
       nav_contact: "Contact",
       hero_portfolio: "Portfolio",
       hero_alias: "aka Davson",
-      hero_role_badge: "Full Stack Developer",
-      hero_role_suffix: "& Digital Solutions Designer",
-      hero_tagline: "Developer & Digital Solutions Designer",
+      hero_role_line: "Full Stack Developer & Digital Solutions Designer",
       hero_desc:
         "I design and build modern web and mobile solutions that are fast, clean, and visually impactful.",
       hero_cta_primary: "View my work",
@@ -224,9 +223,7 @@ window.addEventListener("DOMContentLoaded", () => {
       nav_contact: "Contacto",
       hero_portfolio: "Portafolio",
       hero_alias: "alias Davson",
-      hero_role_badge: "Desarrollador Full Stack",
-      hero_role_suffix: "y Diseñador de Soluciones Digitales",
-      hero_tagline: "Desarrollador y Diseñador de Soluciones Digitales",
+      hero_role_line: "Desarrollador Full Stack y Diseñador de Soluciones Digitales",
       hero_desc:
         "Creo soluciones web y móviles modernas, rápidas y visualmente impactantes.",
       hero_cta_primary: "Ver mis trabajos",
@@ -258,9 +255,7 @@ window.addEventListener("DOMContentLoaded", () => {
       nav_contact: "Contato",
       hero_portfolio: "Portfólio",
       hero_alias: "alias Davson",
-      hero_role_badge: "Desenvolvedor Full Stack",
-      hero_role_suffix: "& Designer de Soluções Digitais",
-      hero_tagline: "Desenvolvedor & Designer de Soluções Digitais",
+      hero_role_line: "Desenvolvedor Full Stack & Designer de Soluções Digitais",
       hero_desc:
         "Crio soluções web e mobile modernas, rápidas e visualmente impactantes.",
       hero_cta_primary: "Ver meus trabalhos",

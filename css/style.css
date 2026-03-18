@@ -134,3 +134,10 @@ section {
 
 
 
+
+/* Hero glow emphasis */
+.glow-text {
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.6),
+    0 0 18px rgba(56, 189, 248, 0.45),
+    0 0 32px rgba(99, 102, 241, 0.35);
+}
