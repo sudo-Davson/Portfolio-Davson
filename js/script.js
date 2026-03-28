@@ -206,6 +206,13 @@ window.addEventListener("DOMContentLoaded", () => {
       portfolio_design_label: "Design",
       portfolio_video_title: "Projet montage vidéo",
       portfolio_video_label: "Vidéo",
+      portfolio_dev1_title: "Société Ngody",
+      portfolio_design1_title: "Mockup Produit",
+      portfolio_design2_title: "Logo Sonia",
+      portfolio_design3_title: "Affiche Locks Pro",
+      portfolio_design4_title: "Étiquette Ebesse Fionfion",
+      portfolio_design5_title: "Logo Creatif",
+      portfolio_video1_title: "Colonie",
       portfolio_dev1_desc: "Projet web récent : vitrine moderne et responsive.",
       portfolio_dev1_link: "Voir le site",
       portfolio_design1_desc: "Présentation visuelle et mise en contexte premium.",
@@ -324,6 +331,13 @@ window.addEventListener("DOMContentLoaded", () => {
       portfolio_design_label: "Design",
       portfolio_video_title: "Video editing projects",
       portfolio_video_label: "Video",
+      portfolio_dev1_title: "Société Ngody",
+      portfolio_design1_title: "Product Mockup",
+      portfolio_design2_title: "Sonia Logo",
+      portfolio_design3_title: "Locks Pro Poster",
+      portfolio_design4_title: "Ebesse Fionfion Label",
+      portfolio_design5_title: "Creative Logo",
+      portfolio_video1_title: "Colony",
       portfolio_dev1_desc: "Recent web project: modern responsive showcase site.",
       portfolio_dev1_link: "View site",
       portfolio_design1_desc: "Premium visual presentation and mockup showcase.",
@@ -440,6 +454,13 @@ window.addEventListener("DOMContentLoaded", () => {
       portfolio_design_label: "Diseño",
       portfolio_video_title: "Proyectos de edición de video",
       portfolio_video_label: "Video",
+      portfolio_dev1_title: "Société Ngody",
+      portfolio_design1_title: "Mockup de Producto",
+      portfolio_design2_title: "Logo Sonia",
+      portfolio_design3_title: "Cartel Locks Pro",
+      portfolio_design4_title: "Etiqueta Ebesse Fionfion",
+      portfolio_design5_title: "Logo Creativo",
+      portfolio_video1_title: "Colonia",
       portfolio_dev1_desc: "Proyecto web reciente: vitrina moderna y responsive.",
       portfolio_dev1_link: "Ver sitio",
       portfolio_design1_desc: "Presentación visual y mockup premium.",
@@ -556,6 +577,13 @@ window.addEventListener("DOMContentLoaded", () => {
       portfolio_design_label: "Design",
       portfolio_video_title: "Projetos de edição de vídeo",
       portfolio_video_label: "Vídeo",
+      portfolio_dev1_title: "Société Ngody",
+      portfolio_design1_title: "Mockup de Produto",
+      portfolio_design2_title: "Logo Sonia",
+      portfolio_design3_title: "Cartaz Locks Pro",
+      portfolio_design4_title: "Etiqueta Ebesse Fionfion",
+      portfolio_design5_title: "Logo Criativo",
+      portfolio_video1_title: "Colônia",
       portfolio_dev1_desc: "Projeto web recente: vitrine moderna e responsiva.",
       portfolio_dev1_link: "Ver site",
       portfolio_design1_desc: "Apresentação visual e mockup premium.",
@@ -656,6 +684,20 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+    document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+      const key = el.dataset.i18nTitle;
+      if (dict[key]) {
+        el.setAttribute("data-title", dict[key]);
+      }
+    });
+
+    document.querySelectorAll("[data-i18n-description]").forEach((el) => {
+      const key = el.dataset.i18nDescription;
+      if (dict[key]) {
+        el.setAttribute("data-description", dict[key]);
+      }
+    });
+
     if (form) {
       form.dataset.i18nError = dict.form_error;
       form.dataset.i18nSending = dict.form_sending;
@@ -704,6 +746,9 @@ window.addEventListener("DOMContentLoaded", () => {
     yearEl.textContent = new Date().getFullYear();
   }
 });
+
+
+
 
 
 
