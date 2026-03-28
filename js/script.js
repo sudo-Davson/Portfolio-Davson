@@ -17,19 +17,23 @@ window.addEventListener("DOMContentLoaded", () => {
   // Fade-in on scroll
   const revealElements = document.querySelectorAll(".reveal");
   if (revealElements.length > 0) {
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
+    if (!("IntersectionObserver" in window)) {
+      revealElements.forEach((el) => el.classList.add("in-view"));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
 
-    revealElements.forEach((el) => observer.observe(el));
+      revealElements.forEach((el) => observer.observe(el));
+    }
   }
 
   // Lightbox
@@ -355,3 +359,4 @@ window.addEventListener("DOMContentLoaded", () => {
     yearEl.textContent = new Date().getFullYear();
   }
 });
+
