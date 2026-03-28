@@ -171,6 +171,17 @@ window.addEventListener("DOMContentLoaded", () => {
       services_title: "Services",
       services_subtitle:
         "Des solutions complètes pour vous aider à créer une présence digitale cohérente et mémorable.",
+      portfolio_title: "Portfolio",
+      portfolio_subtitle:
+        "Une sélection de projets récents pour illustrer l'univers visuel et les expertises proposées.",
+      portfolio_dev_title: "Projet développement d'application",
+      portfolio_dev_label: "Dev",
+      portfolio_design_title: "Projet design",
+      portfolio_design_label: "Design",
+      portfolio_video_title: "Projet montage vidéo",
+      portfolio_video_label: "Vidéo",
+      portfolio_video_empty:
+        "Les projets de montage vidéo seront ajoutés ici prochainement.",
       contact_title: "Contact",
       contact_subtitle:
         "Un projet en tête ? Parlons-en et construisons ensemble une solution sur-mesure.",
@@ -203,6 +214,16 @@ window.addEventListener("DOMContentLoaded", () => {
       services_title: "Services",
       services_subtitle:
         "Complete solutions to help you build a consistent and memorable digital presence.",
+      portfolio_title: "Portfolio",
+      portfolio_subtitle:
+        "A selection of recent projects showcasing visual direction and expertise.",
+      portfolio_dev_title: "App development projects",
+      portfolio_dev_label: "Dev",
+      portfolio_design_title: "Design projects",
+      portfolio_design_label: "Design",
+      portfolio_video_title: "Video editing projects",
+      portfolio_video_label: "Video",
+      portfolio_video_empty: "Video editing projects will be added soon.",
       contact_title: "Contact",
       contact_subtitle:
         "Have a project in mind? Let's talk and build a tailored solution together.",
@@ -235,6 +256,16 @@ window.addEventListener("DOMContentLoaded", () => {
       services_title: "Servicios",
       services_subtitle:
         "Soluciones completas para ayudarte a construir una presencia digital coherente y memorable.",
+      portfolio_title: "Portafolio",
+      portfolio_subtitle:
+        "Una selección de proyectos recientes que muestran la dirección visual y la experiencia.",
+      portfolio_dev_title: "Proyectos de desarrollo",
+      portfolio_dev_label: "Dev",
+      portfolio_design_title: "Proyectos de diseño",
+      portfolio_design_label: "Diseño",
+      portfolio_video_title: "Proyectos de edición de video",
+      portfolio_video_label: "Video",
+      portfolio_video_empty: "Los proyectos de edición de video se añadirán pronto.",
       contact_title: "Contacto",
       contact_subtitle:
         "¿Tienes un proyecto? Hablemos y construyamos una solución a medida.",
@@ -267,6 +298,16 @@ window.addEventListener("DOMContentLoaded", () => {
       services_title: "Serviços",
       services_subtitle:
         "Soluções completas para ajudar você a construir uma presença digital coerente e memorável.",
+      portfolio_title: "Portfólio",
+      portfolio_subtitle:
+        "Uma seleção de projetos recentes que mostram direção visual e expertise.",
+      portfolio_dev_title: "Projetos de desenvolvimento",
+      portfolio_dev_label: "Dev",
+      portfolio_design_title: "Projetos de design",
+      portfolio_design_label: "Design",
+      portfolio_video_title: "Projetos de edição de vídeo",
+      portfolio_video_label: "Vídeo",
+      portfolio_video_empty: "Os projetos de edição de vídeo serão adicionados em breve.",
       contact_title: "Contato",
       contact_subtitle:
         "Tem um projeto em mente? Vamos conversar e criar uma solução sob medida.",
@@ -359,4 +400,3 @@ window.addEventListener("DOMContentLoaded", () => {
     yearEl.textContent = new Date().getFullYear();
   }
 });
-
