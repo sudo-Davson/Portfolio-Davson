@@ -11,5 +11,6 @@
   - type: web
     name: davson-portfolio
     runtime: static
-    buildCommand: mkdir -p dist && cp -r index.html css js images dist/
+    buildCommand: mkdir -p dist && cp -r index.html css js images videos dist/
     staticPublishPath: dist
+
